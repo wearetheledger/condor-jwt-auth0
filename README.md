@@ -1,9 +1,6 @@
-# condor-jwt-keycloak
+# condor-jwt-auth0
 
-This module lets you authenticate GRPC calls using JSON Web Tokens (**JWTs**) created by [Keycloak](http://www.keycloak.org/) in your [Condor](https://github.com/devsu/condor-framework) GRPC services.
-
-[![Build Status](https://travis-ci.org/devsu/condor-jwt-keycloak.svg?branch=master)](https://travis-ci.org/devsu/condor-jwt-keycloak)
-[![Coverage Status](https://coveralls.io/repos/github/devsu/condor-jwt-keycloak/badge.svg?branch=master)](https://coveralls.io/github/devsu/condor-jwt-keycloak?branch=master)
+This module lets you authenticate GRPC calls using JSON Web Tokens (**JWTs**) created by [Auth0](http://www.auth0.com/) in your [Condor](https://github.com/devsu/condor-framework) GRPC services.
 
 **Condor** is a [GRPC Framework for node](https://github.com/devsu/condor-framework).
 
@@ -15,11 +12,6 @@ This module extends [condor-jwt](https://github.com/devsu/condor-jwt) and offers
 - Allows live token validation (using introspection)
 - Multi-tenancy support, by allowing multiple realms
 
-## Installation
-
-```bash
-npm i --save condor-framework condor-jwt-keycloak
-```
 
 ## How to use
 
@@ -31,8 +23,7 @@ const jwt = require('condor-jwt-keycloak');
 const Greeter = require('./greeter');
 
 const options = {
-  'url': 'http://localhost:8080/auth',
-  'realm': 'master',
+  'jwksUri': 'https://sandrino.auth0.com/.well-known/jwks.json',
 };
 
 const app = new Condor()
@@ -52,18 +43,10 @@ Allows all the options of the [condor-jwt](https://github.com/devsu/condor-jwt) 
 
 | Option                     | Description                                                                               | Default |
 |----------------------------|-------------------------------------------------------------------------------------------|---------|
-| url                        | The authorization server URL. E.g. `http://localhost:8080/auth`. Required.                |         |
-| realm                      | The realm name. E.g. `master`. Required unless `allowAnyRealm` is `true`.                 |         |
-| allowAnyRealm              | Allow to authenticate against any realm in the authorization server.                      | false   |
-| minTimeBetweenJwksRequests | How many *milliseconds* should have elapsed before trying to get JWKs from keycloak again | 10000   |
-| introspect                 | Perform live validation using token introspection.                                        | false   |
-| clientId                   | Client ID setup in keycloak. Required when introspect is true.                            |         |
-| clientSecret               | Client secret (can be found in keycloak, under credentials tab). Required when introspect is true.|         |
+| jwksUri                        | The authorization server jwksUri. E.g. `https://sandrino.auth0.com/.well-known/jwks.json`. Required.                |         |
 
 Additionaly, you can send any option of the [verify](https://github.com/auth0/node-jsonwebtoken#jwtverifytoken-secretorpublickey-options-callback) method of the [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken). Such options will be used to verify the token.
 
-## License and Credits
 
-MIT License. Copyright 2017 
 
-Built by the [GRPC experts](https://devsu.com) at Devsu.
+

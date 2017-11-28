@@ -1,31 +1,31 @@
 const proxyquire = require('proxyquire');
 const Spy = require('jasmine-spy');
 const index = require('./index');
-const JWTKeycloak = require('./lib/jwt-keycloak');
+const JWTauth0 = require('./lib/jwt-auth0');
 
 describe('module', () => {
-  it('should expose jwtKeycloak() method', () => {
+  it('should expose JWTauth0() method', () => {
     expect(index).toEqual(jasmine.any(Function));
   });
 
   it('should expose the JWT class', () => {
-    expect(index.JWTKeycloak).toEqual(JWTKeycloak);
+    expect(index.JWTauth0).toEqual(JWTauth0);
   });
 
-  describe('jwtkeycloak()', () => {
-    let fakeIndex, JWTKeycloakStub, options, middleware, constructorCount;
+  describe('jwtauth0()', () => {
+    let fakeIndex, JWTauth0Stub, options, middleware, constructorCount;
     beforeEach(() => {
       constructorCount = 0;
-      options = {'foo': 'bar'};
-      JWTKeycloakStub = class {
+      options = { 'foo': 'bar' };
+      JWTauth0Stub = class {
         constructor(opt) {
           expect(opt).toEqual(options);
           constructorCount++;
         }
       };
       middleware = Spy.resolve();
-      JWTKeycloakStub.prototype.getMiddleware = Spy.returnValue(middleware);
-      fakeIndex = proxyquire('./index', {'./lib/jwt-keycloak': JWTKeycloakStub});
+      JWTauth0Stub.prototype.getMiddleware = Spy.returnValue(middleware);
+      fakeIndex = proxyquire('./index', { './lib/jwt-auth0': JWTauth0Stub });
     });
 
     it('should create JWT instance with the options and return its middleware', () => {

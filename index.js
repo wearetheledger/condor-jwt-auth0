@@ -1,7 +1,7 @@
-const JWTKeycloak = require('./lib/jwt-keycloak');
+const JWTauth0 = require('./lib/jwt-auth0');
 
 exports = module.exports = (options) => {
-  return new JWTKeycloak(options).getMiddleware();
+  return new JWTauth0(options).getMiddleware();
 };
 
-exports.JWTKeycloak = JWTKeycloak;
+exports.JWTauth0 = JWTauth0;

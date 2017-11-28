@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "istanbul cover jasmine",
-    "posttest": "npm run lint && nsp check && istanbul check-coverage",
+    "posttest": "nsp check && istanbul check-coverage",
     "lint": "eslint .",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
@@ -44,10 +44,9 @@
   },
   "dependencies": {
     "condor-jwt": "^0.3.1",
+    "jwks-rsa": "^1.2.1",
     "jws": "^3.1.4",
-    "pem-jwk": "^1.5.1",
-    "request": "^2.81.0",
-    "request-promise": "^4.2.0"
+    "request": "^2.81.0"
   },
   "peerDependencies": {}
 }
