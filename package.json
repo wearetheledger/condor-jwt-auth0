@@ -1,7 +1,7 @@
 {
-  "name": "condor-jwt-keycloak",
-  "version": "0.0.2",
-  "description": "Condor authentication Middleware using JWTs from keycloak",
+  "name": "condor-jwt-auth0",
+  "version": "0.0.3",
+  "description": "Condor authentication Middleware using JWTs from Auth0",
   "main": "index.js",
   "scripts": {
     "test": "istanbul cover jasmine",
@@ -21,9 +21,9 @@
     "grpc",
     "jwt",
     "bearer",
-    "keycloak"
+    "auth0"
   ],
-  "author": "Cesar Salazar @ Devsu",
+  "author": "Jonas Snellinckx",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/devsu/condor-jwt-keycloak/issues"
