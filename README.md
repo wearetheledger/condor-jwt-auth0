@@ -19,7 +19,7 @@ The JWT middleware decodes and verifies a JsonWebToken passed in the `authorizat
 
 ```js
 const Condor = require('condor-framework');
-const jwt = require('condor-jwt-keycloak');
+const jwt = require('condor-jwt-auth0');
 const Greeter = require('./greeter');
 
 const options = {
